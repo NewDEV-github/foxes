@@ -16,7 +16,7 @@ var shoot_time=99999 #time since last shot
 var anim=""
 var speed = 0.5
 var scene
-onready var sprite = $Characters/Sonic
+onready var sprite = $Anim/Sprite
 #func restart_position():
 #	set_position(Vector2(144, 90))
 #func _ready():
@@ -101,7 +101,7 @@ func _physics_process(delta):
 
 	### ANIMATION ###
 
-	var new_anim = "idle"
+	var new_anim = "idle1"
 
 	if on_floor:
 		if linear_vel.x < -SIDING_CHANGE_SPEED:
@@ -120,7 +120,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left"):
 			sprite.scale.x = 1
 		if linear_vel.y < 0:
-			new_anim = "jumping"
+			new_anim = "jump"
 		else:
 			new_anim = "falling"
 
@@ -129,5 +129,5 @@ func _physics_process(delta):
 
 	if new_anim != anim:
 		anim = new_anim
-		$Characters/Sonic/AnimationPlayer.play(anim)
+		$Anim/Sprite/AnimationPlayer.play(anim)
 	

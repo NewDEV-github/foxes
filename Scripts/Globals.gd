@@ -1,5 +1,22 @@
 extends Node
 var bits = 32
+var stage_list = {
+	"0": "res://Scenes/Stages/poziom_1.tscn",
+	"1": "res://Scenes/Stages/poziom_2.tscn",
+	"2": "res://Scenes/Stages/poziom_3.tscn",
+	"3": "res://Scenes/Stages/poziom_4.tscn",
+	"4": "res://Scenes/Stages/poziom_5.tscn",
+	"5": "res://Scenes/Stages/poziom_6.tscn",
+	"6": "res://Scenes/Stages/poziom_7.tscn",
+	"7": "res://Scenes/Stages/poziom_8.tscn",
+	"8": "res://Scenes/Stages/poziom_9.tscn",
+	"9": "res://Scenes/Stages/poziom_10.tscn",
+	"10": "res://Scenes/Stages/poziom_11.tscn",
+	"11": "res://Scenes/Stages/poziom_12.tscn",
+	"12": "res://Scenes/Stages/poziom_13.tscn",
+	"13": "res://Scenes/Stages/poziom_14.tscn",
+	"14": "res://Scenes/Stages/poziom_15.tscn",
+}
 #var feedback_script = preload("res://FeedBack/Main.gd").new()
 signal debugModeSet
 signal loaded
@@ -26,10 +43,10 @@ var version_commit:String = "unknown"
 var current_save_name = ""
 var new_characters:Array = [
 #	"NewTheFox",
-	"Tails",
+	"Tails.exe",
 ]
 func construct_game_version():
-	var text = "Support: suport@new-dev.ml\n%s version: %s.%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), version_string, version_commit, OS.get_date().year]
+	var text = "Support: support@new-dev.ml\n%s version: %s.%s\nCopyright 2020 - %s, New DEV" % [str(ProjectSettings.get_setting("application/config/name")), version_string, version_commit, OS.get_date().year]
 	return text
 func _init():
 	file.open("game_version.txt", File.READ)
@@ -150,6 +167,16 @@ func save_level(stage:int, save_name:String):
 	sonyk.set_value("save", "character", character_path)
 	sonyk.save("user://save_"+save_name+".cfg")
 #	sonyk.close()
+
+func load_level(save_name:String):
+	var sonyk = ConfigFile.new()
+	sonyk.load("user://save_"+save_name+".cfg")
+	var stage = sonyk.get_value("save", "stage")
+	var character_pth = sonyk.get_value("save", "character")
+	character_path = character_pth
+	selected_character = load(character_pth).instance()
+	var loaded_stage = stage_list[stage]
+	BackgroundLoad.load_scene(loaded_stage)
 
 func game_over():
 	get_tree().change_scene("res://Scenes/GameOver.tscn")

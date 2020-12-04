@@ -83,8 +83,7 @@ func load_easterregg_animation(name_:String):
 		$IMG_0009.texture = load(str(ntf_imgs[randi()%ntf_imgs.size()]))
 	elif name_ == 'bs':
 		$IMG_0009.texture = load(str(bs_imgs[randi()%bs_imgs.size()]))
-func _on_World1_pressed():
-	$CharacterSelect.popup_centered()
+
 func _on_Options_pressed():
 	$Control.popup_centered()
 
@@ -137,3 +136,17 @@ func _on_Level_Editor_pressed():
 		lvm.download_editor()
 func _on_Feedback_pressed():
 	$Feedback.send_feedback()
+
+
+func _on_NewGame_pressed() -> void:
+	$NewSave.popup_centered()
+
+
+func _on_LoadGame_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_CreateNewSave_pressed() -> void:
+	Globals.current_save_name = $NewSave/LineEdit.text
+	$CharacterSelect.popup_centered()
+	#Globals.save_level(0, $NewSave/LineEdit.text)
