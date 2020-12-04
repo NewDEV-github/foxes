@@ -37,7 +37,6 @@ func _process(_delta):
 	save_file.set_value('Game', 'target_fps', str(Engine.target_fps))
 	save_file.set_value('Game', 'locale', str(TranslationServer.get_locale()))
 	save_file.set_value('Game', 'game_clock', str(Globals.gc_mode))
-	save_file.set_value('Game', 'nsfw_enabled', str(!bool(str(Globals.nsfw))))
 	save_file.set_value('Game', 'minimap_enabled', str(!bool(str(Globals.get_minimap_enabled()))))
 	save_file.set_value('Audio', 'master_bus_volume', str($"tabs/Ogólne/Options/Audio/Master/Master_slider".value))
 	save_file.set_value('Audio', 'master_bus_enabled', str($"tabs/Ogólne/Options/Audio/Master/Master_on".pressed))
