@@ -26,7 +26,7 @@ func _ready() -> void:
 		$ItemList.add_item(i)
 
 func get_save_name(file_name:String):
-	return file_name.erase(0, 5)
+	return str(file_name.erase(0, 5))
 #	var regex = RegEx.new()
 #	regex.compile("save_(\\s+).cfg")
 #	var result = regex.search(file_name)
