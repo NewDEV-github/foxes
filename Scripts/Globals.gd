@@ -175,7 +175,7 @@ func load_level(save_name:String):
 	var character_pth = sonyk.get_value("save", "character")
 	character_path = character_pth
 	selected_character = load(character_pth).instance()
-	var loaded_stage = stage_list[stage]
+	var loaded_stage = stage_list[str(stage)]
 	BackgroundLoad.load_scene(loaded_stage)
 
 func game_over():
