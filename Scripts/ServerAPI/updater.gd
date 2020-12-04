@@ -1,29 +1,8 @@
 extends Control
 var intro_played = false
 var file = File.new()
-func load_assets():
-	if file.file_exist("user://packs/graphics.pck"):
-#load graphics downloaded from server
-		if ProjectSettings.load_resource_pack("user://packs/graphics.pck") == false:
-			print("Error loading graphics!")
-			ErrorCodeServer.treat_error(ErrorCodeServer.FILE_ERR_CORRUPTED)
-			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
-	else:
-		$PCKDownloader.set_download_file("user://packs/graphics.pck")
-		$PCKDownloader.request("https://dl.new-dev.tk/data/games/foxy-adventure/graphics.pck")
-
-	if file.file_exists("user://packs/audio.pck"):
-#load audio downloaded from server
-		if ProjectSettings.load_resource_pack("user://packs/audio.pck") == false:
-			print("Error loading audio!")
-			ErrorCodeServer.treat_error(ErrorCodeServer.FILE_ERR_CORRUPTED)
-			ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_LOADING_DATA)
-	else:
-		$RequiredAssets.set_download_file("user://packs/audio.pck")
-		$RequiredAssets.request("https://dl.new-dev.tk/data/games/foxy-adventure/audio.pck")
 
 func _ready() -> void:
-	pass
 	if not str(OS.get_name()) == "Android":
 		var stream = VideoStreamGDNative.new()
 		var file = "res://assets/Animations/intro_vp8.webm"#supports for now
@@ -43,9 +22,9 @@ func _ready() -> void:
 	else:
 		OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
 	file = File.new()
-	print(str(PI))
-	if Globals.release_mode:
-		load_assets()
+#	print(str(PI))
+#	if Globals.release_mode:
+#		load_assets()
 #	ErrorCodeServer.treat_error(ErrorCodeServer.ERROR_DOWNLOADING_DATA)
 #	BackgroundLoad.load_scene("res://s.tscn")
 	var dir = Directory.new()
