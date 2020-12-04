@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Graphics/arrow_button.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Characters/character_control.gd" type="Script" id=2]
@@ -240,8 +240,6 @@ tracks/5/keys = {
 [sub_resource type="CapsuleShape2D" id=8]
 height = 7.67767
 
-[sub_resource type="RayShape2D" id=6]
-
 [node name="Tails" type="KinematicBody2D"]
 z_index = 1
 collision/safe_margin = 0.1
@@ -267,22 +265,26 @@ rotation = -3.14159
 scale = Vector2( 1, -1 )
 normal = ExtResource( 1 )
 action = "ui_right"
+visibility_mode = 1
 
 [node name="pause" type="TouchScreenButton" parent="CanvasLayer"]
 position = Vector2( 907.926, 5.65686 )
 normal = ExtResource( 5 )
 action = "ui_cancel"
+visibility_mode = 1
 
 [node name="jump" type="TouchScreenButton" parent="CanvasLayer"]
 position = Vector2( 975.808, 478.005 )
 rotation = 1.5708
 normal = ExtResource( 1 )
 action = "ui_accept"
+visibility_mode = 1
 
 [node name="left" type="TouchScreenButton" parent="CanvasLayer"]
 position = Vector2( 62.2255, 492.147 )
 normal = ExtResource( 1 )
 action = "ui_left"
+visibility_mode = 1
 
 [node name="Anim" type="Node2D" parent="."]
 position = Vector2( 0, -4 )
@@ -305,9 +307,6 @@ anims/run = SubResource( 3 )
 [node name="LowCollider" type="CollisionShape2D" parent="."]
 position = Vector2( 9.8995, -1.01041 )
 shape = SubResource( 8 )
-
-[node name="RayShape" type="CollisionShape2D" parent="."]
-shape = SubResource( 6 )
 
 [node name="LeftGroundSensor" type="RayCast2D" parent="."]
 position = Vector2( -9, 0 )
