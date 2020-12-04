@@ -7,7 +7,7 @@ var save_file_names = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	popup()
+#	popup()
 	var dir = Directory.new()
 	if dir.open("user://") == OK:
 		dir.list_dir_begin()

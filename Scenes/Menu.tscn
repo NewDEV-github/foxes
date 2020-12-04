@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://themes/new_gui/neon.tres" type="Theme" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Audio/BGM/music_gekagd.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Fonts/Ubuntu-L20.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Scenes/CharacterSelectMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/SaveLoader.tscn" type="PackedScene" id=7]
 [ext_resource path="res://FeedBack/Main.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Graphics/ja.jpg" type="Texture" id=9]
 [ext_resource path="res://Graphics/bg.jpg" type="Texture" id=10]
@@ -95,7 +96,7 @@ margin_bottom = 135.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 5 )
-text = "LoadGame"
+text = "Load Game"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -147,6 +148,7 @@ __meta__ = {
 }
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
+visible = false
 anchor_left = 0.110352
 anchor_top = 0.388
 anchor_right = 0.892023
@@ -160,7 +162,6 @@ autoplay = true
 bus = "Music"
 
 [node name="CharacterSelect" type="WindowDialog" parent="."]
-visible = true
 margin_left = 183.0
 margin_top = 206.0
 margin_right = 681.0
@@ -194,27 +195,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SelectWorld" type="WindowDialog" parent="."]
-visible = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -244.5
-margin_top = -192.5
-margin_right = 244.5
-margin_bottom = 192.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="WorldList" type="ItemList" parent="SelectWorld"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-items = [ "poziom_1", null, false, "poziom_2", null, false, "poziom_3", null, false, "poziom_4", null, false, "poziom_5", null, false, "poziom_6", null, false, "poziom_7", null, false, "poziom_8", null, false, "poziom_9", null, false, "poziom_10", null, false, "poziom_11", null, false, "poziom_12", null, false, "poziom_13", null, false, "poziom_14", null, false, "poziom_15", null, false ]
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="SaveLoader" parent="." instance=ExtResource( 7 )]
 
 [node name="version_label" type="RichTextLabel" parent="."]
 anchor_top = 1.0
@@ -232,7 +213,6 @@ __meta__ = {
 }
 
 [node name="NewSave" type="WindowDialog" parent="."]
-visible = true
 margin_left = 234.0
 margin_top = 11.0
 margin_right = 605.0
@@ -274,5 +254,4 @@ __meta__ = {
 [connection signal="pressed" from="VBoxContainer2/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="VBoxContainer2/dsc" to="." method="_on_Options2_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Quit" to="." method="_on_Quit_pressed"]
-[connection signal="item_selected" from="SelectWorld/WorldList" to="." method="_on_WorldList_item_selected"]
 [connection signal="pressed" from="NewSave/CreateNewSave" to="." method="_on_CreateNewSave_pressed"]
