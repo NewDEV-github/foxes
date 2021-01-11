@@ -3,11 +3,6 @@ var intro_played = false
 var file = File.new()
 
 func _ready() -> void:
-	var lib = preload("res://bin/level_editor/level_editor.gdns").new()
-	lib.start_editor()
-	print(str(lib.is_editor_running()))
-	lib.close_editor()
-	print(str(lib.is_editor_running()))
 #		var player = OS.native_video_play("res://assets/Animations/intro.webm",0,"1","1")
 #		print(str(player))
 	file = File.new()
@@ -20,7 +15,7 @@ func _ready() -> void:
 	dir.open('user://')
 	dir.make_dir('dlcs')
 	dir.make_dir('Licenses')
-	Globals.opy_recursive('res://Licenses/', 'user://Licenses/')
+#	Globals.opy_recursive('res://Licenses/', 'user://Licenses/')
 	if not file.file_exists('user://logs/engine_log.txt'):
 		dir = Directory.new()
 		dir.open('user://')
